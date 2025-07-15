@@ -75,8 +75,12 @@ WSGI_APPLICATION = 'urbanshadows.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'urbanshadows_db',
+        'USER': 'root',
+        'PASSWORD': 'root',
+        'HOST': 'localhost',
+        'PORT': '3306',
     }
 }
 
@@ -115,6 +119,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
+LOGIN_REDIRECT_URL = 'profile_page'
+LOGOUT_REDIRECT_URL = 'login_page'
+
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [BASE_DIR / "static"]
@@ -127,5 +134,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 import os
 
-TEMPLATES[0]['DIRS'] = [os.path.join(BASE_DIR, 'core', 'templates')]
+TEMPLATES[0]['DIRS'] = [os.path.join(BASE_DIR, 'main', 'templates')]
 

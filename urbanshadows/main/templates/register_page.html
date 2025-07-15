@@ -11,8 +11,9 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{% static 'CSS/New-style.css' %}">
-  <link rel="stylesheet" href="{% static 'CSS/style.css' %}">
+
 </head>
+
 <body>
 
   <!-- Navbar -->
@@ -32,51 +33,7 @@
       <!-- Navbar content -->
       <div class="collapse navbar-collapse justify-content-end align-items-center" id="navbarNav">
         <ul class="navbar-nav mb-2 mb-lg-0 align-items-center">
-          <li class="nav-item">
-            <a class="nav-link text-warning" href="./Urban_legends_gallery.html"><i class="bi bi-fire"></i> Urban
-              Legends</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-warning" href="./Scary_stories_gallery.html"><i class="bi bi-images"></i> Scary
-              Stories</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-warning" href="./Blog_user.html"><i class="bi bi-chat-dots"></i> Blogs</a>
-          </li>
-
-          <!-- Search bar -->
-          <li class="nav-item mx-2">
-            <form class="d-flex" role="search">
-              <input class="form-control form-control-sm me-2 bg-dark text-white" type="search" placeholder="Search..."
-                aria-label="Search" style="border: 1.5px solid white;" onfocus="this.style.border='2px solid crimson';"
-                onblur="this.style.border='1.5px solid white';">
-              <button class="btn btn-outline-light btn-sm" type="submit"><i class="bi bi-search"></i></button>
-            </form>
-          </li>
-
-          <!-- Notification Bell -->
-          <li class="nav-item mx-2 position-relative">
-            <a id="notificationBell" class="nav-link text-warning" href="javascript:void(0);">
-              <i class="bi bi-bell"></i>
-              <span id="notifBadge"
-                class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                3
-                <span class="visually-hidden">unread messages</span>
-              </span>
-            </a>
-
-            <!-- Notification Popup -->
-            <div id="notificationBox" class="shadow bg-dark text-light rounded p-2"
-              style="display: none; position: absolute; right: 0; top: 40px; width: 260px; z-index: 1000;">
-              <div id="notificationItems">
-                <div class="notif-item">🕯️ New ritual tale added</div>
-                <div class="notif-item">👻 Ghost sighting reported</div>
-                <div class="notif-item">💬 5 new echoes on your post</div>
-              </div>
-              <hr class="text-secondary my-2">
-              <button id="markRead" class="btn btn-sm btn-outline-warning w-100">✔️ Mark All as Read</button>
-            </div>
-          </li>
+          
 
 
           <!-- User dropdown -->
@@ -97,45 +54,45 @@
       </div>
     </div>
   </nav>
-  <!-- Navbar end-->
 
-  <!-- Main start-->
+
   <div class="container py-5">
     <div class="row justify-content-center">
       <div class="col-md-6">
         <div class="card bg-secondary text-light shadow-lg">
           <div class="card-body">
-            <h3 class="card-title text-center mb-4"><i class="bi bi-person-circle"></i> Login</h3>
-            <form action="./Home_page.html" method="get">
+            <h3 class="card-title text-center mb-4"><i class="bi bi-plus-circle"></i> Create New User</h3>
+            <form method="POST">
+                {% csrf_token %}
               <div class="mb-3">
-                <label for="username" class="form-label">Username</label>
-                <input type="text" class="form-control white-placeholder" id="username" placeholder="Enter username"
-                  required />
+                <label for="newUsername" class="form-label">Username</label>
+                <input type="text" class="form-control white-placeholder" placeholder="Your Username" name="name" required />
               </div>
               <div class="mb-3">
-                <label for="password" class="form-label">Password</label>
-                <input type="password" class="form-control white-placeholder" id="password" placeholder="Enter password"
-                  required />
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control white-placeholder" placeholder="Your Email" name="email" required />
+              </div>
+              <div class="mb-3">
+                <label for="newPassword" class="form-label">Password</label>
+                <input type="password" class="form-control white-placeholder" placeholder="Your Password" name="password" required />
+              </div>
+              <div class="mb-3">
+                <label for="confirmPassword" class="form-label">Confirm Password</label>
+                <input type="password" class="form-control white-placeholder" placeholder="Your Confirm Password " name="confirmPassword" required />
               </div>
               <div class="d-grid">
-                <button type="submit" class="btn btn-primary"><i class="bi bi-box-arrow-in-right"></i> Login</button>
+                <button type="submit" class="btn btn-danger"><i class="bi bi-person-check"></i> Register</button>
               </div>
-
             </form>
-            <p class="text-center mt-3">New here? <a href="./New_user.html"  style="text-decoration: none;" class="text-warning">Create an account</a>
-            </p>
-            <p class="text-center mt-3">Forget Password? <a href="./change_password.html" class="text-warning">Forget
-                Password</a>
+            <p class="text-center mt-3">Already have an account? <a href="./index.html" class="text-warning">Login</a>
             </p>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <!-- Main end-->
 
-  <!-- Footer start-->
-  <!-- Footer -->
+ <!-- Footer -->
   <footer class="footer mt-5 py-4">
     <div class="container text-center">
       <h5 class="footer-title">👻 UrbanShadows</h5>
@@ -149,9 +106,10 @@
       </div>
     </div>
   </footer>
-  <!-- Footer End-->
+
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 
 </html>
